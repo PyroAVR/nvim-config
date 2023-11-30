@@ -13,35 +13,27 @@ end
 vim.opt.rtp:prepend(lazypath)
 -- configure standard vimrc
 vim.cmd("source " .. string.format("%s/%s", vim.fn.stdpath("config"), "config.vim"))
-vim.g.coq_settings = {
-    auto_start = 'shut-up',
-    clients = {
-	lsp = {
-		enabled = true,
-	}
-    }
-}
-
 -- custom filetype mappings
 require("ftcustom")
 -- configure lazy plugins
 plugins = {
     {import = "plugin_config"},
     {name = "tmuxline", url = "https://github.com/edkolev/tmuxline.vim"},
-    {name = "lsp config", url = "https://github.com/neovim/nvim-lspconfig",
-    },
-    {name = "coq", url = "https://github.com/ms-jpq/coq_nvim",
-    config = function()
-	    local lspconfig = require "lspconfig"
-	    local coq = require "coq"
-	    lspconfig.ccls.setup(coq.lsp_ensure_capabilities())
-    end},
+    {name = "lsp config", url = "https://github.com/neovim/nvim-lspconfig"},
     {name = "vim-fugitive", url = "https://github.com/tpope/vim-fugitive"},
     {name = "base16 colors", url = "https://github.com/chriskempson/base16-vim"},
     {name = "tagbar", url = "https://github.com/preservim/tagbar"},
     {name = "commenter", url = "https://github.com/numToStr/comment.nvim",
     	config = function() require("Comment").setup() end},
-    {name = "auto-session", url = "https://github.com/rmagatti/auto-session"},
+    {name = "auto-session", url = "https://github.com/rmagatti/auto-session",
+     config = function()
+	     require("auto-session").setup({
+		log_level = "error",
+		auto_session_suppress_dirs = {"~/Downloads", "/", "/usr", "/etc"}
+	     })
+     end
+    },
+    {name = "openscad-vim", url = "https://github.com/sirtaj/vim-openscad"},
     -- {name = "nerdtree", url = "https://github.com/preservim/nerdtree"},
 }
 require("lazy").setup(plugins)
