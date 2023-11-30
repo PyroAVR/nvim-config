@@ -22,6 +22,8 @@ vim.g.coq_settings = {
     }
 }
 
+-- custom filetype mappings
+require("ftcustom")
 -- configure lazy plugins
 plugins = {
     {import = "plugin_config"},

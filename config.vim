@@ -31,6 +31,10 @@ let g:WindowMoveRemaps = {"j": "wincmd h",
             \}
 nnoremap  :call UltraRemapWithCount(g:WindowMoveRemaps)<CR>
 
+" FZF sanity
+nnoremap :W :w
+nnoremap <c-f> :FZF
+
 function! s:is_number(chr)
 	return a:chr ># "0" && a:chr <# "9"
 
@@ -56,12 +60,6 @@ function! UltraRemapWithCount(map)
 endfunction
 
 
-" Filetype builtin magic
-filetype on
-filetype plugin on
-"filetype indent on
-syntax on
-
 " Formatting Sanity
 set number
 set relativenumber
@@ -79,4 +77,9 @@ syntax on
 
 " Tagbar, open Ex in new tab
 nmap t :TagbarToggle
-" nmap E :NERDTreeToggle
+"
+" Filetype builtin magic
+filetype on
+filetype plugin on
+filetype indent on
+syntax on
