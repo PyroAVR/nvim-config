@@ -24,16 +24,24 @@ plugins = {
     {name = "base16 colors", url = "https://github.com/chriskempson/base16-vim"},
     {name = "tagbar", url = "https://github.com/preservim/tagbar"},
     {name = "commenter", url = "https://github.com/numToStr/comment.nvim",
-    	config = function() require("Comment").setup() end},
+        config = function() require("Comment").setup() end},
     {name = "auto-session", url = "https://github.com/rmagatti/auto-session",
-     config = function()
-	     require("auto-session").setup({
-		log_level = "error",
-		auto_session_suppress_dirs = {"~/Downloads", "/", "/usr", "/etc"}
-	     })
-     end
+        config = function()
+            require("auto-session").setup({
+                log_level = "error",
+                auto_session_suppress_dirs = {"~/Downloads", "/", "/usr", "/etc"}
+            })
+        end
     },
     {name = "openscad-vim", url = "https://github.com/sirtaj/vim-openscad"},
+    {name = "Neogit", url = "https://github.com/NeogitOrg/neogit",
+	dependencies = {
+	   "nvim-lua/plenary.nvim",
+	   "sindrets/diffview.nvim",
+	   "ibhagwan/fzf-lua",
+	},
+	config = true
+    },
     -- {name = "nerdtree", url = "https://github.com/preservim/nerdtree"},
 }
 require("lazy").setup(plugins)
