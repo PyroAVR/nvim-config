@@ -46,6 +46,16 @@ cpp.keymaps = {
         pattern = "cout",
         subst = "std::cout << ",
     },
+    {
+        mode = {"i", "n"},
+        pattern = "",
+        subst = function() require('Comment.api').toggle.linewise() end
+    },
+    {
+        mode = "v",
+        pattern = "",
+        subst = function() require('Comment.api').toggle.linewise(vim.fn.visualmode()) end
+    },
 }
 
 python = ftconfig:new(default)
